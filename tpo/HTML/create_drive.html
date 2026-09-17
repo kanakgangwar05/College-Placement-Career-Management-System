@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drive Creation Wizard</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>Drive Creation Wizard</h1>
+  </header>
+
+  <main class="dashboard-container">
+
+    <form class="drive-form">
+
+      <!-- Step 1: Company Details -->
+      <section class="form-section">
+        <h3>Company Branding</h3>
+
+        <div class="form-group">
+          <label for="companyName">Company Name</label>
+          <input type="text" id="companyName" name="companyName" placeholder="e.g., Google" />
+        </div>
+
+        <div class="form-group">
+          <label for="companyLogo">Company Logo</label>
+          <input type="file" id="companyLogo" name="companyLogo" />
+        </div>
+
+        <div class="form-group">
+          <label for="jobRole">Job Role</label>
+          <input type="text" id="jobRole" name="jobRole" placeholder="e.g., Software Engineer" />
+        </div>
+      </section>
+
+      <!-- Step 2: CTC & Deadlines -->
+      <section class="form-section">
+        <h3>CTC &amp; Deadlines</h3>
+
+        <div class="form-group">
+          <label for="ctc">CTC (in LPA)</label>
+          <input type="number" id="ctc" name="ctc" placeholder="e.g., 12" />
+        </div>
+
+        <div class="form-group">
+          <label for="deadline">Registration Deadline</label>
+          <input type="date" id="deadline" name="deadline" />
+        </div>
+      </section>
+
+      <!-- Step 3: Eligibility Criteria -->
+      <section class="form-section">
+        <h3>Selection Cutoffs</h3>
+
+        <div class="form-group">
+          <label for="minCgpa">Minimum CGPA</label>
+          <input type="number" step="0.1" id="minCgpa" name="minCgpa" placeholder="e.g., 7.5" />
+        </div>
+
+        <div class="form-group">
+          <label for="branches">Eligible Branches</label>
+          <select id="branches" name="branches" multiple>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="ME">ME</option>
+            <option value="Civil">Civil</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="backlogs">Max Active Backlogs Allowed</label>
+          <input type="number" id="backlogs" name="backlogs" placeholder="e.g., 0" />
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary">Back</button>
+        <button type="submit" class="btn-primary">Create Drive</button>
+      </div>
+
+    </form>
+
+  </main>
+
+</body>
+</html>
