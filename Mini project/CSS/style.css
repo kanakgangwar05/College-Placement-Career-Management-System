@@ -1433,3 +1433,66 @@ footer a {
         width: 100%;
     }
 }
+/* ==============================
+   M2 - APPLICATIONS PAGE
+   ============================== */
+
+.m2-application-list {
+    display: grid;
+    gap: 15px;
+}
+
+.m2-application-row {
+    background-color: white;
+    border: 1px solid #dbe7f3;
+    border-radius: 10px;
+    padding: 18px 20px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 150px;
+
+    gap: 20px;
+    align-items: center;
+}
+
+.m2-application-company {
+    color: #172b4d;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.m2-application-role {
+    color: #64748b;
+    font-size: 13px;
+}
+
+.m2-application-status {
+    text-align: center;
+
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    background-color: #eaf4ff;
+    color: #0866ff;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* Applications Responsive */
+
+@media (max-width: 700px) {
+
+    .m2-application-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .m2-application-status {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
