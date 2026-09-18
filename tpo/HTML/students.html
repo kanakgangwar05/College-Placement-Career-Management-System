@@ -23,6 +23,10 @@
   <main class="dashboard-container">
 
     <div class="filter-bar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search by student name..." />
+      </div>
       <select class="filter-select">
         <option value="">Filter by Branch</option>
         <option value="CSE">CSE</option>
@@ -110,6 +114,15 @@
 
         </tbody>
       </table>
+
+      <div class="pagination">
+        <span class="pagination-info">Showing 1–3 of 3 students</span>
+        <div class="pagination-buttons">
+          <button class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn" disabled><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
     </div>
 
   </main>
