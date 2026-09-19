@@ -1,0 +1,81 @@
+/* ============================================================
+   create_drive.css — styles ONLY for create_drive.html
+   (Colors/fonts come from shared/css/common.css — do not redefine here)
+   ============================================================ */
+
+/* Section divider inside the form */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 20px 0;
+}
+
+/* Stepper (Step 1 / 2 / 3 indicator) */
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 640px;
+  margin: 0 auto 28px auto;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 100px;
+}
+
+.step-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-color);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.step span {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.step.active .step-circle {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.step.active span {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background-color: var(--border-color);
+  margin-bottom: 22px;
+}
+
+/* Logo upload row */
+.logo-upload-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-preview {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  object-fit: cover;
+}
