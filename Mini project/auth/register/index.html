@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register - GLA Campus Portal</title>
+
+    <link rel="stylesheet" href="../../CSS/common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="register-page">
+
+        <div class="register-box">
+
+            <div class="logo">
+                <a href="../../index.html">GLA Campus Portal</a>
+            </div>
+
+            <h1>Create Account</h1>
+            <p class="subtitle">Join the university placement network</p>
+
+            <!-- Role Selection -->
+            <div class="role-section">
+                <p>Register As</p>
+                <div class="roles">
+                    <label class="role-option">
+                        <input type="radio" name="role" value="student" checked>
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Student</span>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="role" value="tpo">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">TPO</span>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="role" value="recruiter">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Recruiter</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pure HTML Form -->
+            <form action="../login/index.html" method="get">
+
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="e.g. name@gla.ac.in" required>
+
+                <div id="roleField">
+                    <label for="roll">ID</label>
+                    <input type="text" id="roll" name="roll" placeholder="e.g. 2415000751" required>
+                </div>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+
+                <button type="submit" class="btn-auth-submit" id="regBtn">
+                    Create Account
+                </button>
+
+            </form>
+
+            <p class="register-text">
+                Already registered?
+                <a href="../login/index.html">Login here</a>
+            </p>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

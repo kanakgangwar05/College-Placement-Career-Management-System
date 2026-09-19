@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Records - TPO Panel</title>
+
+    <link rel="stylesheet" href="../../CSS/common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="dashboard-header">
+
+        <a href="../../index.html" class="home-logo">
+            🎓 GLA Campus Portal
+        </a>
+
+        <nav>
+            <a href="../index.html">Overview</a>
+            <a href="../manage-drives/index.html">Manage Drives</a>
+            <a href="index.html" class="nav-active">Student Records</a>
+            <a href="../../index.html">Portal Home</a>
+        </nav>
+
+        <a href="../../auth/login/index.html" class="logout-button">
+            Logout
+        </a>
+
+    </header>
+
+
+    <!-- Main Content Area -->
+    <main class="dashboard">
+
+        <!-- Welcome Banner -->
+        <section class="welcome-section">
+            <p>TPO Panel &bull; Academic Placement Registry</p>
+            <h1>Student Verification & Placement Database</h1>
+            <span>Verified student records across CSE, IT, ECE, and ME departments.</span>
+        </section>
+
+
+        <!-- Filter Controls -->
+        <section class="dashboard-section toolbar-section">
+
+            <div class="records-toolbar">
+
+                <div>
+                    <input type="text" id="recordSearch" class="search-input" placeholder="Search student by name...">
+                </div>
+
+                <div>
+                    <select id="branchFilter">
+                        <option value="ALL">All Departments</option>
+                        <option value="CSE">B.Tech CSE</option>
+                        <option value="IT">B.Tech IT</option>
+                        <option value="ECE">B.Tech ECE</option>
+                        <option value="ME">B.Tech ME</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Records Table -->
+        <section class="dashboard-section">
+
+            <div class="section-header-flex">
+                <h2>Verified Student Cohort (2026-27)</h2>
+                <a href="#" class="btn-secondary-action btn-sm">Export CSV</a>
+            </div>
+
+            <div class="table-wrapper">
+
+                <table class="tpo-table" id="recordsTable">
+
+                    <thead>
+                        <tr>
+                            <th>Roll Number</th>
+                            <th>Student Name</th>
+                            <th>Branch</th>
+                            <th>CGPA</th>
+                            <th>Placement Status</th>
+                            <th>Company / Offer</th>
+                            <th>CTC Package</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="recordsTbody">
+
+                        <tr data-branch="CSE">
+                            <td><strong>2415000751</strong></td>
+                            <td>Kanak Gangwar</td>
+                            <td>B.Tech CSE</td>
+                            <td><strong>9.40</strong></td>
+                            <td><span class="status-badge badge-selected">Placed ✓</span></td>
+                            <td>Oracle Financial Services</td>
+                            <td><strong class="pkg-highlight">₹14.0 LPA</strong></td>
+                        </tr>
+
+                        <tr data-branch="CSE">
+                            <td><strong>2415000708</strong></td>
+                            <td>Ishita Rastogi</td>
+                            <td>B.Tech CSE</td>
+                            <td><strong>9.10</strong></td>
+                            <td><span class="status-badge badge-selected">Placed ✓</span></td>
+                            <td>Accenture Innovation</td>
+                            <td><strong class="pkg-highlight">₹11.5 LPA</strong></td>
+                        </tr>
+
+                        <tr data-branch="CSE">
+                            <td><strong>2415000711</strong></td>
+                            <td>Jai Karan Gupta</td>
+                            <td>B.Tech CSE</td>
+                            <td><strong>8.90</strong></td>
+                            <td><span class="status-badge badge-shortlisted">Tech Round 2</span></td>
+                            <td>Deloitte USI (In Progress)</td>
+                            <td>₹10.0 LPA</td>
+                        </tr>
+
+                        <tr data-branch="CSE">
+                            <td><strong>2415000747</strong></td>
+                            <td>Kakul Mittal</td>
+                            <td>B.Tech CSE</td>
+                            <td><strong>9.20</strong></td>
+                            <td><span class="status-badge badge-selected">Placed ✓</span></td>
+                            <td>Wipro Turbo</td>
+                            <td><strong class="pkg-highlight">₹9.0 LPA</strong></td>
+                        </tr>
+
+                        <tr data-branch="IT">
+                            <td><strong>2415000654</strong></td>
+                            <td>Vikram Malhotra</td>
+                            <td>B.Tech IT</td>
+                            <td><strong>8.70</strong></td>
+                            <td><span class="status-badge badge-selected">Placed ✓</span></td>
+                            <td>TCS Digital</td>
+                            <td><strong class="pkg-highlight">₹9.0 LPA</strong></td>
+                        </tr>
+
+                        <tr data-branch="ECE">
+                            <td><strong>2415000688</strong></td>
+                            <td>Rohan Verma</td>
+                            <td>B.Tech ECE</td>
+                            <td><strong>8.50</strong></td>
+                            <td><span class="status-badge badge-shortlisted">Assessment Cleared</span></td>
+                            <td>Infosys Power Programmer</td>
+                            <td>₹12.0 LPA</td>
+                        </tr>
+
+                        <tr data-branch="ME">
+                            <td><strong>2415000521</strong></td>
+                            <td>Abhishek Dixit</td>
+                            <td>B.Tech ME</td>
+                            <td><strong>7.80</strong></td>
+                            <td><span class="status-badge badge-in-review">Active</span></td>
+                            <td>—</td>
+                            <td>—</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            🎓 <strong>GLA Campus Portal</strong> — TPO Command Center
+        </div>
+        <div>
+            <a href="../index.html">Overview</a>
+            <a href="../manage-drives/index.html">Drives</a>
+            <a href="index.html">Records</a>
+            <a href="../../index.html">Main Portal</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
