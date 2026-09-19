@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TPO Analytics Hub</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Font Awesome for icons (CDN — no download needed) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>TPO Analytics Hub</h1>
+    <img src="https://ui-avatars.com/api/?name=TPO+Admin&background=ffffff&color=1F3864" alt="TPO Admin" class="topbar-avatar" />
+  </header>
+
+  <nav class="module-nav">
+    <a href="dashboard.html" class="nav-link active">Dashboard</a>
+    <a href="create_drive.html" class="nav-link">Create Drive</a>
+    <a href="students.html" class="nav-link">Students</a>
+  </nav>
+
+  <main class="dashboard-container">
+
+    <!-- Welcome banner -->
+    <section class="welcome-banner">
+      <div>
+        <h2>Welcome back, TPO Admin 👋</h2>
+        <p>Here's how placements are shaping up this season.</p>
+      </div>
+    </section>
+
+    <!-- Quick stats row -->
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon-circle"><i class="fa-solid fa-chart-pie"></i></div>
+        <h3>Placement %</h3>
+        <p>82%</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-circle"><i class="fa-solid fa-sack-dollar"></i></div>
+        <h3>Highest Package</h3>
+        <p>₹42 LPA</p>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon-circle"><i class="fa-solid fa-coins"></i></div>
+        <h3>Average Package</h3>
+        <p>₹8.5 LPA</p>
+      </div>
+    </section>
+
+    <!-- Charts row: static placeholders for now -->
+    <section class="charts-row">
+      <div class="chart-box">
+        <h3>Department-wise Placement</h3>
+        <div class="chart-placeholder">
+          <p>[ Bar Chart: CSE vs ECE vs ME ]</p>
+        </div>
+      </div>
+
+      <div class="chart-box">
+        <h3>Year-on-Year Hiring Trend</h3>
+        <div class="chart-placeholder">
+          <p>[ Line Chart: 2022 – 2026 Hiring Trend ]</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

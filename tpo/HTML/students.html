@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Verification Grid</title>
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Font Awesome for icons (CDN — no download needed) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>Student Verification Grid</h1>
+  </header>
+
+  <nav class="module-nav">
+    <a href="dashboard.html" class="nav-link">Dashboard</a>
+    <a href="create_drive.html" class="nav-link">Create Drive</a>
+    <a href="students.html" class="nav-link active">Students</a>
+  </nav>
+
+  <main class="dashboard-container">
+
+    <div class="filter-bar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search by student name..." />
+      </div>
+      <select class="filter-select">
+        <option value="">Filter by Branch</option>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="ME">ME</option>
+      </select>
+
+      <select class="filter-select">
+        <option value="">Sort by Rank</option>
+        <option value="asc">CGPA: High to Low</option>
+        <option value="desc">CGPA: Low to High</option>
+      </select>
+    </div>
+
+    <div class="table-wrapper">
+      <table class="student-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Branch</th>
+            <th>CGPA</th>
+            <th>Backlogs</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td class="student-cell">
+              <img src="https://ui-avatars.com/api/?name=Aarav+Sharma&background=2E75B6&color=fff" alt="Aarav Sharma" class="avatar" />
+              <span>Aarav Sharma</span>
+            </td>
+            <td>CSE</td>
+            <td>8.7</td>
+            <td>0</td>
+            <td><span class="badge badge-pending">Pending</span></td>
+            <td class="action-cell">
+              <button class="icon-btn verify-btn" title="Verify Details">
+                <i class="fa-solid fa-circle-check"></i>
+              </button>
+              <button class="icon-btn flag-btn" title="Flag Discrepancy">
+                <i class="fa-solid fa-flag"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="student-cell">
+              <img src="https://ui-avatars.com/api/?name=Priya+Verma&background=1F3864&color=fff" alt="Priya Verma" class="avatar" />
+              <span>Priya Verma</span>
+            </td>
+            <td>ECE</td>
+            <td>9.1</td>
+            <td>0</td>
+            <td><span class="badge badge-verified">Verified</span></td>
+            <td class="action-cell">
+              <button class="icon-btn verify-btn" title="Verify Details">
+                <i class="fa-solid fa-circle-check"></i>
+              </button>
+              <button class="icon-btn flag-btn" title="Flag Discrepancy">
+                <i class="fa-solid fa-flag"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="student-cell">
+              <img src="https://ui-avatars.com/api/?name=Rohit+Yadav&background=8FAADC&color=fff" alt="Rohit Yadav" class="avatar" />
+              <span>Rohit Yadav</span>
+            </td>
+            <td>ME</td>
+            <td>7.4</td>
+            <td>1</td>
+            <td><span class="badge badge-flagged">Flagged</span></td>
+            <td class="action-cell">
+              <button class="icon-btn verify-btn" title="Verify Details">
+                <i class="fa-solid fa-circle-check"></i>
+              </button>
+              <button class="icon-btn flag-btn" title="Flag Discrepancy">
+                <i class="fa-solid fa-flag"></i>
+              </button>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <div class="pagination">
+        <span class="pagination-info">Showing 1–3 of 3 students</span>
+        <div class="pagination-buttons">
+          <button class="page-btn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn" disabled><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
