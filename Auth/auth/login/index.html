@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - GLA Campus Portal</title>
+
+    <link rel="stylesheet" href="../../CSS/common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="login-page">
+
+        <div class="login-box">
+
+            <div class="logo">
+                <a href="../../index.html">GLA Campus Portal</a>
+            </div>
+
+            <h1>Welcome Back!</h1>
+            <p class="subtitle">Select role and log in to your dashboard</p>
+
+            <!-- Role Selector -->
+            <div class="role-section">
+                <p>Select Role</p>
+                <div class="roles">
+                    <label class="role-option">
+                        <input type="radio" name="role" value="student" checked>
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Student</span>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="role" value="tpo">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">TPO</span>
+                    </label>
+                    <label class="role-option">
+                        <input type="radio" name="role" value="recruiter">
+                        <span class="radio-custom"></span>
+                        <span class="radio-label">Recruiter</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Pure HTML Form -->
+            <form action="../../student/index.html" method="get">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="@emailaddress" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="12345678" required>
+
+                <div class="remember">
+                    <label>
+                        <input type="checkbox" checked> Remember me
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-auth-submit" id="submitBtn">
+                    Login
+                </button>
+
+            </form>
+
+            <!-- Quick Direct Access in Pure HTML -->
+            <div class="quick-portals-links">
+                <p>Or launch dashboard directly:</p>
+                <div class="portal-pills">
+                    <a href="../../student/index.html">Student</a>
+                    <a href="../../recruiter/index.html">Recruiter</a>
+                    <a href="../../tpo/index.html">TPO</a>
+                </div>
+            </div>
+
+            <p class="register-text">
+                Don't have an account?
+                <a href="../register/index.html">Register here</a>
+            </p>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
