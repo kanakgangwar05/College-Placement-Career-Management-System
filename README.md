@@ -1,8 +1,8 @@
 # College Placement & Career Management System
 
-> **Status:** Temporary README — draft is pending team review of the shared UI concepts. This will be updated once the team finalizes which direction (this synopsis vs. the extended Campus Recruitment Portal spec) we're building.
+> **Status:** Front-end development completed. All team members have completed their assigned modules using HTML5 and CSS3.
 
-**GLA University, Mathura — Department of Computer Engineering Application**
+**GLA University, Mathura — Department of Computer Engineering Application**  
 B.Tech CSE, 3rd Year — Mini Project Synopsis
 
 **Team**
@@ -17,9 +17,9 @@ B.Tech CSE, 3rd Year — Mini Project Synopsis
 
 ## About
 
-A front-end web application that presents a structured, responsive interface for campus placement and career-related activities — student registration, viewing job/internship drives, and tracking application status.
+A front-end web application that presents a structured, responsive interface for campus placement and career-related activities — student registration, viewing placement drives, managing student profiles, accessing career resources, and handling recruiter and TPO-related activities.
 
-The current scope is limited to the technologies covered in coursework so far: **HTML5** for structure, **CSS3** for styling and responsive layouts, and **vanilla JavaScript** for interactivity (form validation, dynamic content filtering, navigation). No backend or database is used yet — all data is sample/mock data stored in JS arrays/objects to simulate real placement records.
+The current scope focuses on the technologies covered in coursework so far: **HTML5** for structure and **CSS3** for styling, layouts, Flexbox, Grid, and responsive design. No backend or database is used yet — the project uses sample/mock data to demonstrate placement-related information and user interfaces.
 
 ## Problem Statement
 
@@ -28,37 +28,64 @@ Most colleges rely on manual or scattered methods — spreadsheets, printed noti
 ## Objectives
 
 - Design a responsive, multi-page front-end website for a College Placement and Career Management System.
-- Build page structure using semantic HTML5 (Home, Student Registration, Placement Drives, Career Resources, Dashboard, About/Contact).
-- Style all pages using Flexbox and Grid for a modern, responsive layout.
-- Use JavaScript for client-side form validation.
-- Use JavaScript to dynamically display and filter sample placement-drive data.
-- Ensure the site is fully responsive across mobile, tablet, and desktop.
+- Build page structures using semantic HTML5 for different user modules.
+- Develop a Student Module containing Dashboard, Placement Drives, Student Profile, and Career Resources.
+- Develop front-end interfaces for Recruiter and TPO/Placement Cell modules.
+- Style all pages using CSS3, Flexbox, and Grid for a modern, responsive layout.
+- Provide clear navigation between different pages and modules.
+- Display sample placement-drive information including company, role, CTC, eligibility, location, and required skills.
+- Ensure the site is responsive across mobile, tablet, and desktop screen sizes.
 
 ## Pages
 
 | Page | Route | Purpose |
 |---|---|---|
-| Home | `index.html` | Hero, stats, how-it-works, featured drives |
-| Placement Drives | `drives.html` | Filterable list of sample company drives |
-| Student Registration | `register.html` | Validated registration form |
-| Career Resources | `resources.html` | Resume, interview, and aptitude prep guides |
-| Student Dashboard | `dashboard.html` | Sample profile + application status tracker |
-| Contact | `contact.html` | Placement cell info + contact form |
+| Student Dashboard | `student/index.html` | Placement statistics, featured drives, application pipeline, and upcoming interviews |
+| Placement Drives | `student/drives/index.html` | Display available placement drives with company, role, eligibility, CTC, location, and skills |
+| Student Profile | `student/profile/index.html` | Personal details, academic information, technical skills, and resume information |
+| Career Resources | `student/resources/index.html` | Resume, interview, aptitude, and placement preparation resources |
+| Recruiter Dashboard | `recruiter/index.html` | Recruiter-side placement and recruitment interface |
+| Applicants | `recruiter/applicants/` | Display applicant-related information |
+| Post Job | `recruiter/post-job/` | Front-end interface for posting placement opportunities |
+| TPO Dashboard | `tpo/index.html` | Placement cell management interface |
+| Manage Drives | `tpo/manage-drives/` | Interface for managing placement drives |
+| Student Records | `tpo/student-records/` | Display and manage student placement records |
+| Login | `auth/login/` | User login interface |
+| Registration | `auth/register/` | User registration interface |
 
 ## Tech Stack
 
 - HTML5 (semantic markup)
 - CSS3 (Flexbox, Grid, responsive breakpoints)
-- Vanilla JavaScript (no frameworks) — form validation, filtering, dynamic rendering from sample data
-- Sample/mock data only — no server, no database at this stage
+- Sample/mock data only — no server or database at this stage
 
 ## Methodology
 
-Requirement analysis → wireframing → HTML structuring → CSS styling → client-side interactivity (JS) → cross-device testing → documentation.
+Requirement analysis → module division → wireframing and UI planning → HTML structuring → CSS styling → responsive design → cross-page navigation → browser testing → documentation.
+
+## Team Contributions
+
+- **Ishita Rastogi** — Student Module including Student Dashboard, Placement Drives / Job Board, Student Profile, Career Resources, and Upcoming Interviews.
+- **Jai Karan Gupta** — Assigned front-end module and project components.
+- **Kakul Mittal** — Assigned TPO / Placement Cell module and project components.
+- **Kanak Gangwar** — Project structure, authentication and assigned front-end components.
+
+All team members completed their assigned front-end tasks as part of the project.
 
 ## Future Scope
 
-The codebase is structured (organized folders, clear IDs/classes) so a real backend — e.g. PHP/MySQL or Node.js — can be integrated in later semesters without a redesign.
+The codebase is structured with organized folders and separate modules so that a real backend and database can be integrated in later semesters without requiring a complete redesign.
+
+Future enhancements may include:
+
+- Backend integration
+- Database connectivity
+- Real user authentication
+- Dynamic placement-drive management
+- Real-time application tracking
+- Resume upload and storage
+- Recruiter-student interaction
+- TPO-managed placement records
 
 ## References
 
@@ -68,4 +95,4 @@ The codebase is structured (organized folders, clear IDs/classes) so a real back
 4. S. Patel and N. Joshi, "A Study on Automated Campus Recruitment Systems," *International Journal of Advanced Research in Computer Science*, vol. 11, no. 2, 2020.
 
 ---
-*This README is a placeholder based on the original project synopsis. It will be revised once the team confirms whether to proceed with this scope or the expanded Campus Recruitment Portal (multi-role: Student/TPO/Recruiter) spec.*
+*This README documents the completed front-end implementation of the College Placement & Career Management System. The current version focuses on HTML5 and CSS3-based interfaces, while backend and database integration remain part of the future scope.*
