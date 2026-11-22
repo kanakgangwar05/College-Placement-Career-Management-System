@@ -22,50 +22,67 @@
 
   <main class="dashboard">
 
-    <!-- Welcome banner (shared .welcome-section) -->
+    <!-- Welcome banner -->
     <section class="welcome-section">
       <p>TPO Admin Panel</p>
-      <h1>Welcome back, TPO Admin 👋</h1>
+      <h1 id="welcomeText">Welcome back, TPO Admin</h1>
       <span>Here's how placements are shaping up this season.</span>
     </section>
 
-    <!-- Stat cards (shared .dashboard-cards / .dashboard-card) -->
+    <!-- Stat cards (values are filled by dashboard.js) -->
     <section class="dashboard-cards">
       <div class="dashboard-card">
         <div class="stat-icon-circle"><i class="fa-solid fa-chart-pie"></i></div>
-        <h2>82%</h2>
+        <h2 id="statPlacement">--</h2>
         <h3>Placement %</h3>
       </div>
       <div class="dashboard-card">
         <div class="stat-icon-circle"><i class="fa-solid fa-sack-dollar"></i></div>
-        <h2>₹42 LPA</h2>
+        <h2 id="statHighest">--</h2>
         <h3>Highest Package</h3>
       </div>
       <div class="dashboard-card">
         <div class="stat-icon-circle"><i class="fa-solid fa-coins"></i></div>
-        <h2>₹8.5 LPA</h2>
+        <h2 id="statAverage">--</h2>
         <h3>Average Package</h3>
+      </div>
+      <div class="dashboard-card">
+        <div class="stat-icon-circle"><i class="fa-solid fa-briefcase"></i></div>
+        <h2 id="statDrives">0</h2>
+        <h3>Active Drives</h3>
       </div>
     </section>
 
-    <!-- Charts (shared .dashboard-section) -->
+    <!-- Charts -->
     <section class="dashboard-section">
       <h2>Department-wise Placement</h2>
-      <p class="section-subtitle">CSE vs ECE vs ME</p>
-      <div class="chart-placeholder">
-        <p>[ Bar Chart: CSE vs ECE vs ME ]</p>
+      <p class="section-subtitle">Percentage of students placed in each branch</p>
+      <div class="chart-box">
+        <canvas id="deptChart"></canvas>
       </div>
     </section>
 
     <section class="dashboard-section">
       <h2>Year-on-Year Hiring Trend</h2>
       <p class="section-subtitle">2022 – 2026</p>
-      <div class="chart-placeholder">
-        <p>[ Line Chart: 2022 – 2026 Hiring Trend ]</p>
+      <div class="chart-box">
+        <canvas id="trendChart"></canvas>
       </div>
     </section>
 
+    <!-- Drives created from the Create Drive page -->
+    <section class="dashboard-section">
+      <h2>Created Drives</h2>
+      <p class="section-subtitle">Drives whose registration deadline has not passed</p>
+      <ul id="driveList"></ul>
+    </section>
+
   </main>
+
+  <!-- Order matters: Chart.js -> data.js -> dashboard.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="../JS/data.js"></script>
+  <script src="../JS/dashboard.js"></script>
 
 </body>
 </html>
