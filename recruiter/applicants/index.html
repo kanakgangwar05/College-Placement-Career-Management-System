@@ -7,7 +7,7 @@
 
     <title>Applicant Funnel - Recruiter Panel</title>
 
-    <link rel="stylesheet" href="../../CSS/common.css">
+    <link rel="stylesheet" href="../../Common-CSS/common.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +17,8 @@
     <header class="dashboard-header">
 
         <a href="../../index.html" class="home-logo">
-            🎓 GLA Campus Portal
+            <img src="../../Auth/images/GLA_University_logo.png" alt="GLA University logo" class="portal-logo-icon">
+            GLA Campus Portal
         </a>
 
         <nav>
@@ -27,7 +28,7 @@
             <a href="../../index.html">Portal Home</a>
         </nav>
 
-        <a href="../../auth/login/index.html" class="logout-button">
+        <a href="../../Auth/auth/login/index.html" class="logout-button">
             Logout
         </a>
 
@@ -88,7 +89,39 @@
                 </select>
             </div>
 
+            <div>
+                <select id="statusFilter" aria-label="Filter by applicant status">
+                    <option value="ALL">All Statuses</option>
+                    <option value="In Review">In Review</option>
+                    <option value="Shortlisted">Shortlisted</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+            </div>
+
+            <div>
+                <select id="cgpaFilter" aria-label="Minimum CGPA">
+                    <option value="0">All CGPA</option>
+                    <option value="7">CGPA 7+</option>
+                    <option value="8">CGPA 8+</option>
+                    <option value="9">CGPA 9+</option>
+                </select>
+            </div>
+
+            <div>
+                <select id="sortApplicants" aria-label="Sort applicants">
+                    <option value="name">Sort by Name</option>
+                    <option value="cgpa-desc">CGPA High to Low</option>
+                    <option value="cgpa-asc">CGPA Low to High</option>
+                </select>
+            </div>
+
+            <button type="button" id="exportApplicants" class="btn-primary-action btn-sm">Export CSV</button>
+
         </section>
+
+        <p id="applicantFeedback" class="recruiter-feedback" role="status"></p>
 
 
         <!-- Applicants Data Table -->
@@ -251,6 +284,11 @@
 
     </main>
 
+    <dialog id="applicantDialog">
+        <div id="applicantDetails"></div>
+        <button type="button" id="closeApplicantDialog" class="btn-secondary-action">Close</button>
+    </dialog>
+
 
     <!-- Footer -->
     <footer>
@@ -265,6 +303,7 @@
         </div>
     </footer>
 
+    <script src="../recruiter.js" defer></script>
 </body>
 
 </html>
