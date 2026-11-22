@@ -1,6 +1,23 @@
 /* ============================================================
    RECRUITER APPLICANTS MATRIX STYLES
    ============================================================ */
+.portal-logo-icon {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.home-logo {
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 1.1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .matrix-filter-bar {
     background-color: var(--bg-card);
     border: 1px solid var(--border-light);
@@ -85,22 +102,62 @@
     background-color: #f0fdf4 !important;
 }
 
-.btn-action-small {
-    padding: 5px 10px;
+.applicant-table td.applicant-actions {
+    white-space: nowrap;
+    text-align: right;
+}
+
+.applicant-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.applicant-actions select,
+.applicant-actions .btn-action-small {
+    box-sizing: border-box;
+    height: 32px;
+    margin: 0;
+}
+
+.applicant-actions select {
+    min-width: 112px;
+    padding: 5px 8px;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
+    background-color: #ffffff;
+    color: var(--text-main);
+    font-size: 12px;
+}
+
+.btn-action-small {
+    padding: 6px 10px;
+    border-radius: 6px;
     font-size: 12px;
     font-weight: bold;
     border: 1px solid var(--border-color);
     cursor: pointer;
     background-color: #ffffff;
     color: var(--text-main);
-    margin-right: 4px;
 }
 
 .btn-action-small:hover {
     background-color: var(--primary-light);
     border-color: var(--primary);
     color: var(--primary);
+}
+
+.applicant-actions .btn-delete-applicant {
+    background-color: #dc2626;
+    color: #ffffff;
+    border-color: #dc2626;
+}
+
+.applicant-actions .btn-delete-applicant:hover {
+    background-color: #b91c1c;
+    border-color: #b91c1c;
+    color: #ffffff;
 }
 
 .btn-select-student {
