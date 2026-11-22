@@ -196,6 +196,29 @@ nav a.nav-active {
   text-align: center;
 }
 
+/* Real chart container (Chart.js canvas goes inside) */
+.chart-box {
+  position: relative;
+  height: 260px;
+}
+
+/* ==========================================================
+   CREATED DRIVES LIST
+   ========================================================== */
+#driveList {
+  list-style: none;
+}
+
+#driveList li {
+  padding: 10px 0;
+  border-bottom: 1px solid #dbe7f3;
+  font-size: 13.5px;
+}
+
+#driveList li:last-child {
+  border-bottom: none;
+}
+
 /* ==========================================================
    RESPONSIVE
    ========================================================== */
@@ -210,3 +233,7 @@ nav a.nav-active {
     text-align: center;
   }
 }
+
+.status-badge { display:inline-flex; padding:3px 10px; border-radius:20px; font-size:12px; font-weight:bold; margin-left:8px; }
+.badge-selected { background:#ecfdf5; color:#059669; border:1px solid #a7f3d0; }
+.badge-flagged  { background:#fdecea; color:#c0392b; border:1px solid #f5c6cb; }
