@@ -2,6 +2,8 @@
     "use strict";
 
     const APPLICANT_KEY = "glaRecruiterApplicants";
+    const DELETED_APPLICANT_KEY = "glaRecruiterDeletedApplicants";
+    const DELETED_OPENING_KEY = "glaRecruiterDeletedOpenings";
     const JOB_KEY = "glaRecruiterJobs";
     const statusNames = ["In Review", "Shortlisted", "Interview", "Offer", "Rejected"];
     const statusClasses = {
@@ -60,6 +62,20 @@
         );
     }
 
+    function readDeletedApplicants() {
+        return new Set(readStorage(DELETED_APPLICANT_KEY, [], (value) =>
+            Array.isArray(value) &&
+            value.every((rollNumber) => typeof rollNumber === "string")
+        ));
+    }
+
+    function readDeletedOpenings() {
+        return new Set(readStorage(DELETED_OPENING_KEY, [], (value) =>
+            Array.isArray(value) &&
+            value.every((openingId) => typeof openingId === "string")
+        ));
+    }
+
     function normalizeStatus(label) {
         const normalized = label.trim().toLowerCase();
         if (normalized.includes("select")) return "Offer";
@@ -74,9 +90,18 @@
         if (!openings) return;
 
         const jobs = readJobs();
+        const deletedOpenings = readDeletedOpenings();
+
+        openings.querySelectorAll(".job-card[data-opening-id]").forEach((card) => {
+            if (deletedOpenings.has(card.dataset.openingId)) {
+                card.remove();
+            }
+        });
+
         jobs.forEach((job) => {
             const card = document.createElement("div");
             card.className = "job-card";
+            card.dataset.openingId = job.id;
 
             const details = document.createElement("div");
             const title = document.createElement("h3");
@@ -99,16 +124,73 @@
             link.href = "applicants/index.html";
             link.className = "btn-primary-action btn-sm";
             link.textContent = "Manage Funnel";
-            card.append(details, link);
+            const actions = document.createElement("div");
+            actions.className = "job-card-actions";
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "btn-action-small btn-delete-applicant";
+            deleteButton.dataset.deleteOpening = job.id;
+            deleteButton.textContent = "Delete";
+            actions.append(link, deleteButton);
+            card.append(details, actions);
             openings.append(card);
         });
 
+        openings.querySelectorAll(".job-card[data-opening-id]").forEach((card) => {
+            const existingActions = card.querySelector(".job-card-actions");
+            if (!existingActions && card.dataset.openingId.startsWith("static-")) {
+                const link = card.querySelector("a");
+                if (!link) return;
+                const actions = document.createElement("div");
+                actions.className = "job-card-actions";
+                const deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.className = "btn-action-small btn-delete-applicant";
+                deleteButton.dataset.deleteOpening = card.dataset.openingId;
+                deleteButton.textContent = "Delete";
+                link.parentNode.insertBefore(actions, link);
+                actions.append(link, deleteButton);
+            }
+        });
+
+        openings.addEventListener("click", (event) => {
+            const deleteButton = event.target.closest("button[data-delete-opening]");
+            if (!deleteButton) return;
+
+            const openingId = deleteButton.dataset.deleteOpening;
+            const card = deleteButton.closest(".job-card");
+            const title = card.querySelector("h3")?.textContent.trim() || "this opening";
+            if (!window.confirm(`Delete ${title}?`)) return;
+
+            if (openingId.startsWith("static-")) {
+                deletedOpenings.add(openingId);
+                if (!writeStorage(DELETED_OPENING_KEY, Array.from(deletedOpenings))) return;
+            } else {
+                const remainingJobs = readJobs().filter((job) => job.id !== openingId);
+                if (!writeStorage(JOB_KEY, remainingJobs)) return;
+            }
+
+            card.remove();
+            const remainingStatic = openings.querySelectorAll(".job-card[data-opening-id^='static-']").length;
+            const activeDynamicJobs = readJobs().length;
+            const activeCount = document.getElementById("activeOpeningsCount");
+            if (activeCount) activeCount.textContent = String(remainingStatic + activeDynamicJobs);
+            showMessage(`Deleted ${title}.`, "success");
+        });
+
         const statuses = readApplicantStatuses();
-        const defaultStatuses = ["Offer", "In Review", "Shortlisted", "In Review", "Shortlisted"];
-        const sampleRollNumbers = ["2415000751", "2415000708", "2415000711", "2415000747", "2415000620"];
-        const allStatuses = sampleRollNumbers.map((rollNumber, index) =>
-            statuses[rollNumber] || defaultStatuses[index]
-        );
+        const deletedApplicants = readDeletedApplicants();
+        const defaultStatuses = {
+            "2415000751": "Offer",
+            "2415000708": "In Review",
+            "2415000711": "Shortlisted",
+            "2415000747": "In Review",
+            "2415000620": "Shortlisted"
+        };
+        const sampleRollNumbers = Object.keys(defaultStatuses);
+        const allStatuses = sampleRollNumbers
+            .filter((rollNumber) => !deletedApplicants.has(rollNumber))
+            .map((rollNumber) => statuses[rollNumber] || defaultStatuses[rollNumber]);
         const pending = allStatuses.filter((status) => status === "In Review").length;
         const offerCards = document.querySelectorAll(".offer-card").length +
             allStatuses.filter((status) => status === "Offer").length;
@@ -117,7 +199,9 @@
         const totalCount = document.getElementById("totalApplicantsCount");
         const pendingCount = document.getElementById("pendingApplicantsCount");
         const offersCount = document.getElementById("offersCount");
-        if (activeCount) activeCount.textContent = String(4 + jobs.length);
+        const deletedStaticCount = Array.from(deletedOpenings)
+            .filter((openingId) => openingId.startsWith("static-")).length;
+        if (activeCount) activeCount.textContent = String(4 - deletedStaticCount + jobs.length);
         if (totalCount) totalCount.textContent = String(allStatuses.length);
         if (pendingCount) pendingCount.textContent = String(pending);
         if (offersCount) offersCount.textContent = String(offerCards);
@@ -128,7 +212,8 @@
         if (!list) return;
 
         const statusMap = readApplicantStatuses();
-        const rows = Array.from(list.querySelectorAll("tr")).map((row, index) => {
+        const deletedApplicants = readDeletedApplicants();
+        const rows = Array.from(list.querySelectorAll("tr")).map((row) => {
             const cells = row.querySelectorAll("td");
             const originalStatus = cells[4].querySelector(".status-badge")?.textContent || "In Review";
             const rollNumber = cells[1].textContent.trim();
@@ -150,7 +235,7 @@
                 skills,
                 status
             };
-        });
+        }).filter((applicant) => !deletedApplicants.has(applicant.rollNumber));
 
         const roleFilter = document.getElementById("roleFilter");
         const knownRoles = new Set(Array.from(roleFilter.options, (option) => option.value));
@@ -172,13 +257,22 @@
         const details = document.getElementById("applicantDetails");
         const offers = document.getElementById("offersContainer");
         const initialOfferCards = Array.from(offers.querySelectorAll(".offer-card"));
-        const initialOffersMarkup = initialOfferCards.map((card) => card.cloneNode(true));
+        const initialOffersMarkup = initialOfferCards
+            .filter((card) => {
+                const rollMatch = card.textContent.match(/Roll:\s*(\d+)/);
+                return !rollMatch || !deletedApplicants.has(rollMatch[1]);
+            })
+            .map((card) => card.cloneNode(true));
 
         function persistStatuses() {
             return writeStorage(APPLICANT_KEY, Object.fromEntries(rows.map((applicant) => [
                 applicant.rollNumber,
                 applicant.status
             ])));
+        }
+
+        function persistDeletedApplicants() {
+            return writeStorage(DELETED_APPLICANT_KEY, Array.from(deletedApplicants));
         }
 
         function renderOffers() {
@@ -271,7 +365,12 @@
                 detailButton.className = "btn-action-small";
                 detailButton.dataset.applicantDetails = applicant.rollNumber;
                 detailButton.textContent = "View Details";
-                actions.append(statusSelect, detailButton);
+                const deleteButton = document.createElement("button");
+                deleteButton.type = "button";
+                deleteButton.className = "btn-action-small btn-delete-applicant";
+                deleteButton.dataset.deleteApplicant = applicant.rollNumber;
+                deleteButton.textContent = "Delete";
+                actions.append(statusSelect, detailButton, deleteButton);
                 row.replaceChild(actions, row.cells[6]);
                 list.append(row);
             });
@@ -326,6 +425,25 @@
         });
 
         list.addEventListener("click", (event) => {
+            const deleteButton = event.target.closest("button[data-delete-applicant]");
+            if (deleteButton) {
+                const rollNumber = deleteButton.dataset.deleteApplicant;
+                const applicant = rows.find((item) => item.rollNumber === rollNumber);
+                if (!applicant) return;
+                if (!window.confirm(`Delete application for ${applicant.name}?`)) return;
+
+                const applicantIndex = rows.findIndex((item) => item.rollNumber === rollNumber);
+                if (applicantIndex === -1) return;
+                rows.splice(applicantIndex, 1);
+                deletedApplicants.add(rollNumber);
+                if (!persistDeletedApplicants() || !persistStatuses()) return;
+                updateCounts();
+                renderOffers();
+                renderRows();
+                showMessage(`Deleted application for ${applicant.name}.`, "success");
+                return;
+            }
+
             const button = event.target.closest("button[data-applicant-details]");
             if (!button) return;
             const applicant = rows.find((item) => item.rollNumber === button.dataset.applicantDetails);
@@ -378,10 +496,9 @@
             .slice(0, 10);
         deadline.min = localToday;
 
-        // A required deadline with no starting value prevents the form from
-        // reaching its publish handler. Start with a sensible, editable date.
+        // Replace missing or expired dates so the publish handler can complete.
         function setDefaultDeadline() {
-            if (deadline.value) return;
+            if (deadline.value && deadline.value >= localToday) return;
             const suggestedDeadline = new Date(today);
             suggestedDeadline.setDate(suggestedDeadline.getDate() + 30);
             deadline.value = new Date(
@@ -460,12 +577,17 @@
             jobs.push(job);
             if (!writeStorage(JOB_KEY, jobs)) return;
 
-            feedback.replaceChildren(document.createTextNode("Job published and saved in this browser. "));
+            feedback.replaceChildren(document.createTextNode("Job posted successfully."));
             const dashboardLink = document.createElement("a");
             dashboardLink.href = "../index.html";
             dashboardLink.textContent = "View recruiter dashboard";
             feedback.append(dashboardLink);
             feedback.dataset.kind = "success";
+
+            window.alert("Job posted successfully.");
+            form.reset();
+            setDefaultDeadline();
+            updatePreview();
         });
     }
 
