@@ -7,7 +7,7 @@
 
     <title>Post Job - Recruiter Panel</title>
 
-    <link rel="stylesheet" href="../../CSS/common.css">
+    <link rel="stylesheet" href="../../Common-CSS/common.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +17,8 @@
     <header class="dashboard-header">
 
         <a href="../../index.html" class="home-logo">
-            🎓 GLA Campus Portal
+            <img src="../../Auth/images/GLA_University_logo.png" alt="GLA University logo" class="portal-logo-icon">
+            GLA Campus Portal
         </a>
 
         <nav>
@@ -27,7 +28,7 @@
             <a href="../../index.html">Portal Home</a>
         </nav>
 
-        <a href="../../auth/login/index.html" class="logout-button">
+        <a href="../../Auth/auth/login/index.html" class="logout-button">
             Logout
         </a>
 
@@ -46,7 +47,9 @@
 
 
         <!-- Job Specification Form -->
-        <form action="../index.html" method="get">
+        <p class="recruiter-feedback" id="jobFormFeedback" role="status"></p>
+
+        <form id="jobForm" action="../index.html" method="get">
 
             <!-- Section 1: Role Overview -->
             <section class="dashboard-section">
@@ -257,6 +260,8 @@
                     <button type="submit" class="btn-primary-action">Publish Job Specification</button>
                 </div>
 
+                <div id="jobPreview" class="dashboard-section"></div>
+
             </section>
 
         </form>
@@ -277,6 +282,7 @@
         </div>
     </footer>
 
+    <script src="../recruiter.js" defer></script>
 </body>
 
 </html>
