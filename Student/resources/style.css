@@ -1,38 +1,132 @@
+
 /* ============================================================
    CAREER RESOURCES STYLES
    ============================================================ */
-.resource-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
+
+.resource-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 22px 0 24px;
+    flex-wrap: wrap;
 }
 
+.resource-controls input,
+.resource-controls select {
+    height: 46px;
+    padding: 0 14px;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    background: var(--bg-card);
+    color: var(--text-main);
+    font: inherit;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.resource-controls input {
+    flex: 1;
+    min-width: 220px;
+}
+
+.resource-controls select {
+    min-width: 210px;
+    cursor: pointer;
+}
+
+.resource-controls input:focus,
+.resource-controls select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Resources Grid */
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+/* Resource Card */
 .resource-card {
     border: 1px solid var(--border-light);
     border-radius: var(--radius);
-    padding: 20px;
+    padding: 22px;
     background-color: var(--bg-card);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    min-height: auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
 }
 
 .resource-card h3 {
     margin: 0;
     font-size: 16px;
+    line-height: 1.5;
     color: var(--text-main);
 }
 
 .resource-card p {
     margin: 0;
     font-size: 13px;
+    line-height: 1.7;
     color: var(--text-muted);
-    flex: 1;
+    
 }
 
 .resource-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    margin-top: 8px;
     color: var(--primary);
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.resource-card a:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+}
+
+/* No Results */
+#noResources {
+    padding: 30px 15px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .resource-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .resource-controls input,
+    .resource-controls select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .resource-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .resource-card {
+        padding: 18px;
+    
+    }
 }
