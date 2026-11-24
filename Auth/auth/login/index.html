@@ -46,8 +46,10 @@
                 </div>
             </div>
 
-            <!-- Pure HTML Form -->
-            <form action="../../student/index.html" method="get">
+            <!-- Message Box for Alerts -->
+            <div id="authMessage" class="auth-message"></div>
+
+            <form id="loginForm">
 
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="@emailaddress" required>
@@ -57,7 +59,7 @@
 
                 <div class="remember">
                     <label>
-                        <input type="checkbox" checked> Remember me
+                        <input type="checkbox" id="rememberMe" checked> Remember me
                     </label>
                     <a href="#">Forgot password?</a>
                 </div>
@@ -86,7 +88,9 @@
         </div>
 
     </main>
-
+    
+<!-- Login JavaScript -->
+    <script src="login.js"></script>
 </body>
 
 </html>
