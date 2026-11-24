@@ -274,3 +274,30 @@ form input:focus {
     background-color: var(--primary);
     color: #ffffff;
 }
+
+/* ============================================================
+   ALERT / NOTIFICATION MESSAGES
+   ============================================================ */
+.auth-message {
+    display: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 16px;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.auth-message.error {
+    display: block;
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+.auth-message.success {
+    display: block;
+    background-color: #ecfdf5;
+    color: #059669;
+    border: 1px solid #a7f3d0;
+}
