@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Redirect based on role (Student, TPO, Recruiter)
         setTimeout(function () {
             if (activeRole === "student") {
-                window.location.href = "../../student/index.html";
+                window.location.href = "../../Student/index.html";
             } else if (activeRole === "tpo") {
                 window.location.href = "../../tpo/index.html";
             } else if (activeRole === "recruiter") {

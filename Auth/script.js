@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (currentUser && authButtonsContainer) {
         // User is logged in: show greeting and dashboard link + logout
-        let dashboardUrl = "student/index.html";
+        let dashboardUrl = "Student/index.html";
         if (currentUser.role === "tpo") dashboardUrl = "tpo/index.html";
         if (currentUser.role === "recruiter") dashboardUrl = "recruiter/index.html";
 
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ------------------------------------------------------------
     const portalCards = document.querySelectorAll(".portal-card");
     const rolePages = [
-        "student/index.html",
+        "Student/index.html",
         "recruiter/index.html",
         "tpo/index.html"
     ];
