@@ -1,0 +1,115 @@
+/* ============================================================
+   RECRUITER DASHBOARD STYLES
+   ============================================================ */
+.portal-logo-icon {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.home-logo {
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 1.1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.job-list {
+    display: grid;
+    gap: 12px;
+}
+
+.job-card {
+    border: 1px solid var(--border-light);
+    background-color: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.job-card h3 {
+    margin: 0 0 4px 0;
+    font-size: 15.5px;
+    color: var(--text-main);
+}
+
+.job-card p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.job-card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.btn-action-small,
+.btn-delete-applicant {
+    min-height: 32px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.job-card-actions .btn-delete-applicant {
+    background-color: #dc2626 !important;
+    color: #ffffff !important;
+    border: 1px solid #dc2626 !important;
+    border-radius: 6px;
+    min-height: 32px;
+    padding: 6px 12px;
+}
+
+.job-card-actions .btn-delete-applicant:hover {
+    background-color: #b91c1c !important;
+    border-color: #b91c1c !important;
+    color: #ffffff !important;
+}
+
+.job-card-actions .btn-sm {
+    min-height: 32px;
+    padding: 6px 12px;
+    line-height: 1;
+}
+
+.status-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+}
+
+.status-card {
+    background-color: var(--primary-subtle);
+    padding: 18px;
+    text-align: center;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+}
+
+.status-card h3 {
+    color: var(--primary);
+    font-size: 24px;
+    margin: 0 0 4px 0;
+}
+
+.status-card p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin: 0;
+}

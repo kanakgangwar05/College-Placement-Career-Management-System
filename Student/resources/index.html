@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Resources - GLA Campus Portal</title>
+
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="dashboard-header">
+        <a href="../../index.html" class="home-logo">
+            🎓 GLA Campus Portal
+        </a>
+
+        <nav>
+            <a href="../index.html">Overview</a>
+            <a href="../drives/index.html">Placement Drives</a>
+            <a href="index.html" class="nav-active">Career Resources</a>
+            <a href="../profile/index.html">My Profile</a>
+            <a href="../../index.html">Portal Home</a>
+        </nav>
+
+        <a href="../../Auth/auth/login/index.html" class="logout-button">Logout</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard">
+
+        <!-- Welcome Banner -->
+        <section class="welcome-section">
+            <p>Student Career Panel</p>
+            <h1>Interview & Career Preparation Hub</h1>
+            <span>Curated study resources, DSA sheets, and interview toolkits.</span>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="dashboard-section">
+
+            <h2>Preparation Modules</h2>
+
+            <!-- Search and Filter -->
+            <div class="resource-controls">
+                <input
+                    type="text"
+                    id="resourceSearch"
+                    placeholder="Search resources..."
+                >
+
+                <select id="resourceCategory">
+                    <option value="all">All Categories</option>
+                    <option value="coding">Coding & DSA</option>
+                    <option value="resume">Resume Building</option>
+                    <option value="aptitude">Aptitude</option>
+                    <option value="interview">Interview Preparation</option>
+                    <option value="experiences">Interview Experiences</option>
+                </select>
+            </div>
+
+            <div class="resource-grid" id="resourceGrid">
+
+                <!-- DSA -->
+                <div class="resource-card" data-category="coding">
+                    <h3>💻 DSA 150 Coding Sheet</h3>
+                    <p>
+                        Practice important coding interview problems covering
+                        arrays, trees, graphs, dynamic programming and more.
+                    </p>
+                    <a href="https://neetcode.io/practice"
+                       target="_blank" rel="noopener noreferrer">
+                        Start Coding Practice →
+                    </a>
+                </div>
+
+                <!-- Resume -->
+                <div class="resource-card" data-category="resume">
+                    <h3>📄 ATS Resume Templates</h3>
+                    <p>
+                        Explore clean, professional resume templates suitable
+                        for job applications and applicant tracking systems.
+                    </p>
+                    <a href="https://www.overleaf.com/latex/templates/tagged/cv"
+                       target="_blank" rel="noopener noreferrer">
+                        Explore Resume Templates →
+                    </a>
+                </div>
+
+                <!-- Aptitude -->
+                <div class="resource-card" data-category="aptitude">
+                    <h3>🧮 Quantitative Aptitude</h3>
+                    <p>
+                        Strengthen quantitative aptitude, logical reasoning
+                        and verbal ability with topic-wise practice questions.
+                    </p>
+                    <a href="https://www.indiabix.com/aptitude/questions-and-answers/"
+                       target="_blank" rel="noopener noreferrer">
+                        Start Aptitude Practice →
+                    </a>
+                </div>
+
+                <!-- OOP / Technical -->
+                <div class="resource-card" data-category="coding">
+                    <h3>🌐 OOPs & Technical Concepts</h3>
+                    <p>
+                        Revise object-oriented programming, DBMS, operating
+                        systems, computer networks and core CS concepts.
+                    </p>
+                    <a href="https://www.geeksforgeeks.org/"
+                       target="_blank" rel="noopener noreferrer">
+                        Explore Technical Topics →
+                    </a>
+                </div>
+
+                <!-- HR -->
+                <div class="resource-card" data-category="interview">
+                    <h3>🗣️ HR & Behavioral Interview Guide</h3>
+                    <p>
+                        Learn the STAR method and prepare for situational,
+                        behavioral, teamwork and HR interview questions.
+                    </p>
+                    <a href="https://www.indeed.com/career-advice/interviewing"
+                       target="_blank" rel="noopener noreferrer">
+                        Read Interview Guide →
+                    </a>
+                </div>
+
+                <!-- Experiences -->
+                <div class="resource-card" data-category="experiences">
+                    <h3>🎯 Interview Experiences</h3>
+                    <p>
+                        Read real interview experiences, placement stories
+                        and company-wise interview preparation tips.
+                    </p>
+                    <a href="https://www.geeksforgeeks.org/company-interview-corner/"
+                       target="_blank" rel="noopener noreferrer">
+                        Read Experiences →
+                    </a>
+                </div>
+
+            </div>
+
+            <p id="noResources" style="display:none;">
+                No resources found. Try another search or category.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            🎓 <strong>GLA Campus Portal</strong> — Student Career Panel
+        </div>
+
+        <div>
+            <a href="../index.html">Overview</a>
+            <a href="../drives/index.html">Drives</a>
+            <a href="index.html">Resources</a>
+            <a href="../../index.html">Main Portal</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
